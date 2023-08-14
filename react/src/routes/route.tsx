@@ -12,7 +12,7 @@ const componentsMap = {
   Layout: Layout,
   Home: lazy(() => import("src/pages/Home")),
   SearchResults: lazy(() => import("src/pages/SearchResults")),
-  PropertyPage: lazy(() => import("src/pages/PropertyPage")),
+  EventPage: lazy(() => import("src/pages/EventPage")),
   Bookings: lazy(() => import("src/pages/Booking")),
 };
 
@@ -26,7 +26,7 @@ const routeConfigs = [
     children: [
       { path: "/", component: componentsMap.Home, isIndex: true },
       { path: "search_results", component: componentsMap.SearchResults },
-      { path: "properties/:id", component: componentsMap.PropertyPage },
+      { path: "properties/:id", component: componentsMap.EventPage },
       { path: "bookings", component: componentsMap.Bookings },
     ],
   },

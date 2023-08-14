@@ -1,7 +1,14 @@
 import { useQuery } from "@tanstack/react-query";
+import { differenceInDays } from "date-fns";
+import { useContext, useState } from "react";
+import { MdHotel, MdLocationOn } from "react-icons/md";
 import { useParams } from "react-router-dom";
 import Button from "../../components/Button";
+import Gallery from "../../components/Gallery";
+import { SearchContext } from "../../contexts/SearchContext";
 import { getEvent } from "../../services/events";
+import { colors } from "../../utils/styles";
+import RoomSelector from "./EventSelector";
 import {
   Container,
   Head,
@@ -23,17 +30,10 @@ import {
   PropertyName,
   PropertyNameAddress,
 } from "./styles";
-import { MdLocationOn, MdHotel } from "react-icons/md";
-import { colors } from "../../utils/styles";
-import Gallery from "../../components/Gallery";
-import { useContext, useState } from "react";
-import { SearchContext } from "../../contexts/SearchContext";
-import { differenceInDays } from "date-fns";
-import RoomSelector from "./RoomSelector";
 
 type Props = {};
 
-const PropertyPage = (props: Props) => {
+const EventPage = (props: Props) => {
   const [isShowGallery, setShowGallery] = useState(false);
   const [isShowRoomSelector, setShowRoomSelector] = useState(false);
   const {
@@ -142,4 +142,4 @@ const PropertyPage = (props: Props) => {
   );
 };
 
-export default PropertyPage;
+export default EventPage;

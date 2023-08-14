@@ -8,6 +8,7 @@ export const colors = {
   textDarkest: "#262626",
   textDark: "#4e4e4e",
   textGray: "#6B6B6B",
+  textLightGray: "#999999",
   textWhite: "#fff",
   textRed: "#DC143C",
 
@@ -17,7 +18,7 @@ export const colors = {
 
   borderGray: "lightgray",
 
-  skeletonBackgound: "lightgray",
+  skeleton: "lightgray",
 };
 
 export const sizes = {

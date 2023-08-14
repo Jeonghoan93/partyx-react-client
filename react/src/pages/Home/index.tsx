@@ -118,9 +118,7 @@ const Home = (props: Props) => {
                     height={185}
                   />
                   <SliderItemText>{event.type}</SliderItemText>
-                  <SliderItemSubTitle>
-                    {event.count} properties
-                  </SliderItemSubTitle>
+                  <SliderItemSubTitle>{event.count} events</SliderItemSubTitle>
                 </SliderItem>
               </Link>
             ))}
@@ -139,7 +137,7 @@ const Home = (props: Props) => {
                   <PostCardOverlayTextImage src={postcard.flag} />
                 </PostCardOverlayText>
                 <PostCardOverlaySubText>
-                  {postcard.properties} properties
+                  {postcard.events} events
                 </PostCardOverlaySubText>
               </PostCardOverlay>
             </PostCard>
@@ -152,7 +150,7 @@ const Home = (props: Props) => {
           <FeaturedPropertiesTitle>Homes guests love</FeaturedPropertiesTitle>
           <Slider slidesToShow={4} infinite={false}>
             {featuredProperties.map((event) => (
-              <Link to={`/properties/${event._id}`} key={event._id}>
+              <Link to={`/events/${event._id}`} key={event._id}>
                 <SliderItem>
                   <SliderItemImage
                     src={event.images[0]}

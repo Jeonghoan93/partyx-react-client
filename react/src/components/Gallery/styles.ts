@@ -1,5 +1,4 @@
-import styled from 'styled-components'
-import { colors } from '../../utils/styles'
+import styled from "styled-components";
 
 export const Container = styled.div`
   position: fixed;
@@ -13,13 +12,13 @@ export const Container = styled.div`
   align-items: center;
   justify-content: center;
   gap: 30px;
-`
+`;
 
 export const Image = styled.img`
   border-radius: 2px;
   max-width: 1024px;
   user-select: none;
-`
+`;
 
 export const CloseIcon = styled.div`
   position: absolute;
@@ -33,10 +32,10 @@ export const CloseIcon = styled.div`
   border-radius: 100%;
   font-size: 12px;
   cursor: pointer;
-`
+`;
 
 export const PrevNextIcon = styled.div`
   color: #fff;
   font-size: 26px;
   cursor: pointer;
-`
+`;

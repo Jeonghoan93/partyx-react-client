@@ -4,7 +4,7 @@ import { DateRange } from "react-date-range";
 import "react-date-range/dist/styles.css";
 import "react-date-range/dist/theme/default.css";
 import { BsCalendarFill } from "react-icons/bs";
-import { FaUserAlt } from "react-icons/fa";
+import { FaSearch, FaUserAlt } from "react-icons/fa";
 import { MdLocationOn } from "react-icons/md";
 import { useNavigate } from "react-router-dom";
 import useOnClickOutside from "../../hooks/useOnClickOutside";
@@ -101,7 +101,7 @@ const HeaderSearch = (props: Props) => {
           navigate("/search_results");
         }}
       >
-        Search
+        <FaSearch fontSize={16} />
       </SearchButton>
     </Container>
   );

@@ -1,6 +1,7 @@
-import React, { useContext, useState } from 'react'
-import { Link, useLocation, useNavigate } from 'react-router-dom'
-import Alert from '../../components/Alert'
+import React, { useContext, useState } from "react";
+import { Link, useLocation, useNavigate } from "react-router-dom";
+import Alert from "../../components/Alert";
+import Button from "../../components/Button";
 import {
   AuthContainer,
   AuthInner,
@@ -13,42 +14,44 @@ import {
   FormInput,
   FormLabel,
   Hr,
-} from '../../components/authStyles'
-import Button from '../../components/Button'
-import { AuthContext } from '../../contexts/AuthContext'
-import { login } from '../../services/auth'
+} from "../../components/authStyles";
+import { AuthContext } from "../../contexts/AuthContext";
+import { login } from "../../services/auth";
 
-type Props = {}
+type Props = {};
 
 const Login = (props: Props) => {
   const [formData, setFormData] = useState({
-    username: '',
-    password: '',
-  })
-  const [errorMsg, setErrorMsg] = useState('')
-  const [isLoading, setLoading] = useState(false)
-  const { dispatch } = useContext(AuthContext)
-  const navigate = useNavigate()
-  const location = useLocation()
+    email: "",
+    password: "",
+  });
+  const [errorMsg, setErrorMsg] = useState("");
+  const [isLoading, setLoading] = useState(false);
+  const { dispatch } = useContext(AuthContext);
+  const navigate = useNavigate();
+  const location = useLocation();
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    setFormData((prev) => ({ ...prev, [e.target.name]: e.target.value }))
-  }
+    setFormData((prev) => ({ ...prev, [e.target.name]: e.target.value }));
+  };
 
   const handleForm = async (e: React.FormEvent) => {
-    e.preventDefault()
-    setLoading(true)
+    e.preventDefault();
+    setLoading(true);
 
     try {
-      const data = await login(formData)
-      dispatch({ type: 'LOGIN', payload: { accessToken: data.tokenData.token, user: data.user } })
-      navigate(location.state?.from || '/')
+      const data = await login(formData);
+      dispatch({
+        type: "LOGIN",
+        payload: { accessToken: data.tokenData.token, user: data.user },
+      });
+      navigate(location.state?.from || "/");
     } catch (error) {
-      setErrorMsg('Invalid username and/or password')
+      setErrorMsg("Invalid email and/or password");
     }
 
-    setLoading(false)
-  }
+    setLoading(false);
+  };
 
   return (
     <AuthContainer>
@@ -56,19 +59,29 @@ const Login = (props: Props) => {
         <AuthTitle>Log In</AuthTitle>
 
         {errorMsg && (
-          <Alert variant="danger" style={{ marginBottom: '15px' }}>
+          <Alert variant="danger" style={{ marginBottom: "15px" }}>
             {errorMsg}
           </Alert>
         )}
 
         <Form onSubmit={handleForm}>
           <FormGroup>
-            <FormLabel>Username</FormLabel>
-            <FormInput type="text" name="username" onChange={handleChange} required />
+            <FormLabel>Email</FormLabel>
+            <FormInput
+              type="text"
+              name="email"
+              onChange={handleChange}
+              required
+            />
           </FormGroup>
-          <FormGroup style={{ marginBottom: '5px' }}>
+          <FormGroup style={{ marginBottom: "5px" }}>
             <FormLabel>Password</FormLabel>
-            <FormInput type="password" name="password" onChange={handleChange} required />
+            <FormInput
+              type="password"
+              name="password"
+              onChange={handleChange}
+              required
+            />
           </FormGroup>
           <Button
             variant="primaryLight"
@@ -81,9 +94,12 @@ const Login = (props: Props) => {
           </Button>
         </Form>
 
-        <AuthText style={{ marginTop: '15px' }}>
-          Don't have an account yet?{' '}
-          <Link to="/register" style={{ color: 'blue', textDecoration: 'underline' }}>
+        <AuthText style={{ marginTop: "15px" }}>
+          Don't have an account yet?{" "}
+          <Link
+            to="/register"
+            style={{ color: "blue", textDecoration: "underline" }}
+          >
             Create account
           </Link>
         </AuthText>
@@ -92,11 +108,11 @@ const Login = (props: Props) => {
 
         <Copyright>
           <CopyrightText>All rights reserved.</CopyrightText>
-          <CopyrightText>Copyright (2006 - 2022) - Booking.com™</CopyrightText>
+          <CopyrightText>Copyright (2020 - 2023) - PartyX™</CopyrightText>
         </Copyright>
       </AuthInner>
     </AuthContainer>
-  )
-}
+  );
+};
 
-export default Login
+export default Login;

@@ -39,7 +39,7 @@ const Navbar = (props: Props) => {
       <Right>
         {auth.isAuthenticated ? (
           <Avatar>
-            <AvatarText>{auth.user?.username}</AvatarText>
+            <AvatarText>{auth.user?.email}</AvatarText>
             <AvatarImage
               src={auth.user?.avatar}
               ref={refAvatarImg}

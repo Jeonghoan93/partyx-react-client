@@ -1,6 +1,7 @@
-import React, { useState } from 'react'
-import { Link, useNavigate } from 'react-router-dom'
-import Alert from '../../components/Alert'
+import React, { useState } from "react";
+import { Link, useNavigate } from "react-router-dom";
+import Alert from "../../components/Alert";
+import Button from "../../components/Button";
 import {
   AuthContainer,
   AuthInner,
@@ -13,43 +14,42 @@ import {
   FormInput,
   FormLabel,
   Hr,
-} from '../../components/authStyles'
-import Button from '../../components/Button'
-import { signup } from '../../services/auth'
+} from "../../components/authStyles";
+import { signup } from "../../services/auth";
 
-type Props = {}
+type Props = {};
 
 const Register = (props: Props) => {
   const [formData, setFormData] = useState({
-    username: '',
-    email: '',
-    password: '',
-    confirmPassword: '',
-  })
-  const [errorMsg, setErrorMsg] = useState('')
-  const [isLoading, setLoading] = useState(false)
-  const navigate = useNavigate()
+    firstName: "",
+    email: "",
+    password: "",
+    confirmPassword: "",
+  });
+  const [errorMsg, setErrorMsg] = useState("");
+  const [isLoading, setLoading] = useState(false);
+  const navigate = useNavigate();
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    setFormData((prev) => ({ ...prev, [e.target.name]: e.target.value }))
-  }
+    setFormData((prev) => ({ ...prev, [e.target.name]: e.target.value }));
+  };
 
   const handleForm = async (e: React.FormEvent) => {
-    e.preventDefault()
-    setLoading(true)
+    e.preventDefault();
+    setLoading(true);
 
     if (formData.password !== formData.confirmPassword)
-      return setErrorMsg("Those password didn't match")
+      return setErrorMsg("Those password didn't match");
 
     try {
-      await signup({ ...formData, confirmPassword: undefined })
-      navigate('/login')
+      await signup({ ...formData, confirmPassword: undefined });
+      navigate("/login");
     } catch (error: any) {
-      setErrorMsg(error.response.data.message)
+      setErrorMsg(error.response.data.message);
     }
 
-    setLoading(false)
-  }
+    setLoading(false);
+  };
 
   return (
     <AuthContainer>
@@ -57,27 +57,47 @@ const Register = (props: Props) => {
         <AuthTitle>Register</AuthTitle>
 
         {errorMsg && (
-          <Alert variant="danger" style={{ marginBottom: '15px' }}>
+          <Alert variant="danger" style={{ marginBottom: "15px" }}>
             {errorMsg}
           </Alert>
         )}
 
         <Form onSubmit={handleForm}>
           <FormGroup>
-            <FormLabel>Username</FormLabel>
-            <FormInput type="text" name="username" onChange={handleChange} required />
-          </FormGroup>
-          <FormGroup style={{ marginBottom: '5px' }}>
             <FormLabel>Email</FormLabel>
-            <FormInput type="email" name="email" onChange={handleChange} required />
+            <FormInput
+              type="text"
+              name="email"
+              onChange={handleChange}
+              required
+            />
           </FormGroup>
-          <FormGroup style={{ marginBottom: '5px' }}>
+          <FormGroup style={{ marginBottom: "5px" }}>
+            <FormLabel>Email</FormLabel>
+            <FormInput
+              type="email"
+              name="email"
+              onChange={handleChange}
+              required
+            />
+          </FormGroup>
+          <FormGroup style={{ marginBottom: "5px" }}>
             <FormLabel>Password</FormLabel>
-            <FormInput type="password" name="password" onChange={handleChange} required />
+            <FormInput
+              type="password"
+              name="password"
+              onChange={handleChange}
+              required
+            />
           </FormGroup>
-          <FormGroup style={{ marginBottom: '5px' }}>
+          <FormGroup style={{ marginBottom: "5px" }}>
             <FormLabel>Confirm Password</FormLabel>
-            <FormInput type="password" name="confirmPassword" onChange={handleChange} required />
+            <FormInput
+              type="password"
+              name="confirmPassword"
+              onChange={handleChange}
+              required
+            />
           </FormGroup>
           <Button
             variant="primaryLight"
@@ -90,9 +110,12 @@ const Register = (props: Props) => {
           </Button>
         </Form>
 
-        <AuthText style={{ marginTop: '15px' }}>
-          Already have an account?{' '}
-          <Link to="/login" style={{ color: 'blue', textDecoration: 'underline' }}>
+        <AuthText style={{ marginTop: "15px" }}>
+          Already have an account?{" "}
+          <Link
+            to="/login"
+            style={{ color: "blue", textDecoration: "underline" }}
+          >
             Login
           </Link>
         </AuthText>
@@ -101,11 +124,11 @@ const Register = (props: Props) => {
 
         <Copyright>
           <CopyrightText>All rights reserved.</CopyrightText>
-          <CopyrightText>Copyright (2006 - 2022) - Booking.com™</CopyrightText>
+          <CopyrightText>Copyright (2020 - 2023) - PartyX™</CopyrightText>
         </Copyright>
       </AuthInner>
     </AuthContainer>
-  )
-}
+  );
+};
 
-export default Register
+export default Register;

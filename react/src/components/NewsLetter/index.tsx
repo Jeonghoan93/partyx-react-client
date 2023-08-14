@@ -8,9 +8,9 @@ import {
   InputGroup,
   SubTitle,
   Title,
-} from './styles'
+} from "./styles";
 
-type Props = {}
+type Props = {};
 
 const NewsLetter = (props: Props) => {
   return (
@@ -19,16 +19,20 @@ const NewsLetter = (props: Props) => {
       <SubTitle>Sign up and we'll send the best deals to you</SubTitle>
       <Form>
         <InputGroup>
-          <Input type="email" placeholder="Your email" style={{ width: '350px' }} />
+          <Input
+            type="email"
+            placeholder="Your email"
+            style={{ width: "350px" }}
+          />
           <FormButton>Subscribe</FormButton>
         </InputGroup>
         <CheckBoxGroup>
           <Input type="checkbox" />
-          <FormLabel>Send me a link to get the FREE Booking.com app!</FormLabel>
+          <FormLabel>Send me a link to get the FREE PartyX app!</FormLabel>
         </CheckBoxGroup>
       </Form>
     </Container>
-  )
-}
+  );
+};
 
-export default NewsLetter
+export default NewsLetter;

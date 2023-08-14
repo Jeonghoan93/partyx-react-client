@@ -10,21 +10,33 @@ import {
   Title,
 } from "./styles";
 
-type Props = {};
+type Props = {
+  emailPlaceholder?: string;
+  buttonText?: string;
+  checkboxLabel?: string;
+  mainTitle?: string;
+  subTitle?: string;
+};
 
-const NewsLetter = (props: Props) => {
+const NewsLetter: React.FC<Props> = ({
+  emailPlaceholder = "Your email",
+  buttonText = "Subscribe",
+  checkboxLabel = "Send me a link to get the FREE PartyX app!",
+  mainTitle = "Save time, save money!",
+  subTitle = "Sign up and we'll send the best deals to you",
+}) => {
   return (
     <Container>
-      <Title>Save time, save money!</Title>
-      <SubTitle>Sign up and we'll send the best deals to you</SubTitle>
+      <Title>{mainTitle}</Title>
+      <SubTitle>{subTitle}</SubTitle>
       <Form>
         <InputGroup>
-          <Input type="email" placeholder="Your email" />
-          <FormButton>Subscribe</FormButton>
+          <Input type="email" placeholder={emailPlaceholder} />
+          <FormButton>{buttonText}</FormButton>
         </InputGroup>
         <CheckBoxGroup>
           <Input type="checkbox" />
-          <FormLabel>Send me a link to get the FREE PartyX app!</FormLabel>
+          <FormLabel>{checkboxLabel}</FormLabel>
         </CheckBoxGroup>
       </Form>
     </Container>

@@ -1,5 +1,5 @@
 import { format } from "date-fns";
-import { useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { DateRange } from "react-date-range";
 import "react-date-range/dist/styles.css";
 import "react-date-range/dist/theme/default.css";
@@ -19,9 +19,35 @@ import {
   SearchButton,
 } from "./styles";
 
-type Props = {};
+type GroupType = {
+  adults: number;
+};
 
-const HeaderSearch = (props: Props) => {
+type DateType = {
+  startDate: Date;
+  endDate: Date;
+};
+
+type Props = {
+  initialCity?: string;
+  initialDates?: DateType;
+  initialGroup?: GroupType;
+  cityPlaceholder?: string;
+  redirectPath?: string;
+};
+
+const HeaderSearch: React.FC<Props> = ({
+  initialCity = "",
+  initialDates = {
+    startDate: new Date(),
+    endDate: new Date(),
+  },
+  initialGroup = {
+    adults: 1,
+  },
+  cityPlaceholder = "Which city are you?",
+  redirectPath = "/search_results",
+}) => {
   const [isShowGroupCounter, setShowGroupCounter] = useState(false);
   const [isShowDateRangePicker, setShowDateRangePicker] = useState(false);
   const refGroupCounterContainer = useRef<HTMLDivElement>(null);
@@ -40,6 +66,12 @@ const HeaderSearch = (props: Props) => {
   const { city, setCity, dates, setDates, group, setGroup, setSearch } =
     useSearch();
 
+  useEffect(() => {
+    setCity(initialCity);
+    setDates(initialDates);
+    setGroup(initialGroup);
+  }, [initialCity, initialDates, initialGroup, setCity, setDates, setGroup]);
+
   return (
     <Container>
       <Item>
@@ -48,7 +80,7 @@ const HeaderSearch = (props: Props) => {
           type="search"
           value={city}
           onChange={(e) => setCity(e.target.value)}
-          placeholder="Which city are you?"
+          placeholder={cityPlaceholder}
         />
       </Item>
       <Item onClick={() => setShowDateRangePicker((prev) => !prev)}>
@@ -98,7 +130,7 @@ const HeaderSearch = (props: Props) => {
           if (!city) return;
 
           setSearch();
-          navigate("/search_results");
+          navigate(redirectPath || "/search_results");
         }}
       >
         <FaSearch fontSize={16} />

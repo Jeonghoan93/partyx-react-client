@@ -5,10 +5,18 @@ import { GiPartyFlags } from "react-icons/gi";
 import { RiBuilding3Fill } from "react-icons/ri";
 import { Icon, List, ListItem, Menu, Span } from "./styles";
 
-type Props = {};
+export type MenuItem = {
+  title: string;
+  icon: React.ReactNode;
+  isActive?: boolean;
+};
 
-const NavbarProductMenu = (props: Props) => {
-  const items = useMemo(
+type Props = {
+  items?: MenuItem[];
+};
+
+const NavbarProductMenu = ({ items: externalItems }: Props) => {
+  const defaultItems = useMemo(
     () => [
       { title: "House party", icon: <FaHome fontSize={21} />, isActive: false },
       { title: "Festival", icon: <GiPartyFlags fontSize={21} /> },
@@ -18,11 +26,13 @@ const NavbarProductMenu = (props: Props) => {
     []
   );
 
+  const items = externalItems || defaultItems;
+
   return (
     <Menu>
       <List>
-        {items.map((item, index) => (
-          <ListItem key={index} isActive={item.isActive || false}>
+        {items.map((item) => (
+          <ListItem key={item.title} isActive={item.isActive || false}>
             <Icon>{item.icon}</Icon>
             <Span>{item.title}</Span>
           </ListItem>

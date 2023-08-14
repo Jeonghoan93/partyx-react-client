@@ -10,11 +10,18 @@ export const Container = styled.footer`
   max-width: ${sizes.screenMaxWidth}px;
   margin-left: auto;
   margin-right: auto;
+
+  @media (max-width: ${sizes.screenMaxWidth}px) {
+    margin-left: 2%;
+    margin-right: 1.3%;
+  }
 `;
 
 export const Links = styled.nav`
   display: flex;
   justify-content: space-between;
+
+  width: 100%;
 `;
 
 export const List = styled.ul`

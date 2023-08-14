@@ -3,7 +3,7 @@ import { BsBuildingCheck } from "react-icons/bs";
 import { FaHome } from "react-icons/fa";
 import { GiPartyFlags } from "react-icons/gi";
 import { RiBuilding3Fill } from "react-icons/ri";
-import { List, ListItem, Menu, Span } from "./styles";
+import { Icon, List, ListItem, Menu, Span } from "./styles";
 
 type Props = {};
 
@@ -23,7 +23,7 @@ const NavbarProductMenu = (props: Props) => {
       <List>
         {items.map((item, index) => (
           <ListItem key={index} isActive={item.isActive || false}>
-            {item.icon}
+            <Icon>{item.icon}</Icon>
             <Span>{item.title}</Span>
           </ListItem>
         ))}

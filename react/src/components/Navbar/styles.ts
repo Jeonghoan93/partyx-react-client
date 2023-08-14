@@ -10,6 +10,11 @@ export const StyledNavbar = styled.nav`
   max-width: ${sizes.screenMaxWidth}px;
   margin-left: auto;
   margin-right: auto;
+
+  @media (max-width: ${sizes.screenMaxWidth}px) {
+    margin-left: 1.3%;
+    margin-right: 1.3%;
+  }
 `;
 
 export const Left = styled.div``;

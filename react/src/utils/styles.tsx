@@ -23,4 +23,5 @@ export const colors = {
 
 export const sizes = {
   screenMaxWidth: 1024,
+  screenMobileMaxWidth: 768,
 };

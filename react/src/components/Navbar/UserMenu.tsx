@@ -66,6 +66,8 @@ const AdvertiseButton = styled.div`
   &:hover {
     color: #fff;
     font-weight: 900;
+    transition: background-color 0.5s;
+    background-color: hsla(0, 0%, 100%, 0.1);
   }
 
   @media (min-width: 768px) {

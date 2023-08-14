@@ -11,14 +11,27 @@ export const Container = styled.div`
   max-width: ${sizes.screenMaxWidth}px;
   margin-left: auto;
   margin-right: auto;
+
+  @media (max-width: ${sizes.screenMaxWidth}px) {
+    margin-left: 1.3%;
+    margin-right: 1.3%;
+  }
 `;
 
 export const Text = styled.h1`
   font-size: 48px;
   font-weight: 700;
   margin-bottom: 5px;
+
+  @media (max-width: ${sizes.screenMaxWidth}px) {
+    font-size: 33px;
+  }
 `;
 
 export const SubText = styled.p`
   font-size: 22px;
+
+  @media (max-width: ${sizes.screenMaxWidth}px) {
+    font-size: 16px;
+  }
 `;

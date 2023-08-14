@@ -19,11 +19,7 @@ const NewsLetter = (props: Props) => {
       <SubTitle>Sign up and we'll send the best deals to you</SubTitle>
       <Form>
         <InputGroup>
-          <Input
-            type="email"
-            placeholder="Your email"
-            style={{ width: "350px" }}
-          />
+          <Input type="email" placeholder="Your email" />
           <FormButton>Subscribe</FormButton>
         </InputGroup>
         <CheckBoxGroup>

@@ -16,4 +16,9 @@ export const Main = styled.main`
   margin-left: auto;
   margin-right: auto;
   margin-bottom: 50px;
+
+  @media (max-width: ${sizes.screenMaxWidth}px) {
+    margin-left: 1.3%;
+    margin-right: 1.3%;
+  }
 `;

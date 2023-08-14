@@ -16,7 +16,7 @@ const Footer = (props: Props) => {
         ))}
       </Links>
       <CopyrightText>
-        Copyright © 2020 - 2023 partyx.fr. All rights reserved.
+        Copyright © 2020 - 2023 partyx All rights reserved.
       </CopyrightText>
     </Container>
   );

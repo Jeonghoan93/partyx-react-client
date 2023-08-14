@@ -8,8 +8,8 @@ import featuredCities from "../../constants/featuredCities";
 import postcards from "../../constants/postcards";
 import propertyTypes from "../../constants/propertyTypes";
 import {
-  countPropertyByCities,
-  countPropertyByPropertyTypes,
+  countEventByCities,
+  countEventByEventTypes,
   getEvents,
 } from "../../services/events";
 import {
@@ -54,26 +54,25 @@ const Home = (props: Props) => {
     return [featuredCityNames, featuredCityImages];
   }, []);
 
-  const [propertyTypeTitles, propertyTypeImages] = useMemo(() => {
-    const propertyTypeTitles = [];
-    const propertyTypeImages = [];
+  const [eventTypeTitles, eventTypeImages] = useMemo(() => {
+    const eventTypeTitles = [];
+    const eventTypeImages = [];
 
     for (const propertyType of propertyTypes) {
-      propertyTypeTitles.push(propertyType.title);
-      propertyTypeImages.push(propertyType.image);
+      eventTypeTitles.push(propertyType.title);
+      eventTypeImages.push(propertyType.image);
     }
 
-    return [propertyTypeTitles, propertyTypeImages];
+    return [eventTypeTitles, eventTypeImages];
   }, []);
 
-  const { data: propertyCountByCities } = useQuery(
-    ["propertyCountByCities"],
-    () => countPropertyByCities(featuredCityNames)
+  const { data: eventCountByCities } = useQuery(["eventCountByCities"], () =>
+    countEventByCities(featuredCityNames)
   );
 
   const { data: propertyCountByPropertyTypes } = useQuery(
     ["propertyCountByPropertyTypes"],
-    () => countPropertyByPropertyTypes(propertyTypeTitles)
+    () => countEventByEventTypes(eventTypeTitles)
   );
 
   const { data: featuredProperties } = useQuery(["featuredProperties"], () =>
@@ -82,25 +81,23 @@ const Home = (props: Props) => {
 
   return (
     <Container>
-      {propertyCountByCities && (
+      {eventCountByCities && (
         <Destinations>
           <DestinationsTitle>Explore India</DestinationsTitle>
           <DestinationsSubTitle>
             These popular destinations have a lot to offer
           </DestinationsSubTitle>
           <Slider slidesToShow={5} infinite={false}>
-            {propertyCountByCities.map((property, index) => (
-              <Link to={`/search_results?city=${property.city}`} key={index}>
+            {eventCountByCities.map((event, index) => (
+              <Link to={`/search_results?city=${event.city}`} key={index}>
                 <SliderItem>
                   <SliderItemImage
                     src={featuredCityImages[index]}
                     width={185}
                     height={185}
                   />
-                  <SliderItemText>{property.city}</SliderItemText>
-                  <SliderItemSubTitle>
-                    {property.count} properties
-                  </SliderItemSubTitle>
+                  <SliderItemText>{event.city}</SliderItemText>
+                  <SliderItemSubTitle>{event.count} events</SliderItemSubTitle>
                 </SliderItem>
               </Link>
             ))}
@@ -110,19 +107,19 @@ const Home = (props: Props) => {
 
       {propertyCountByPropertyTypes && (
         <PropertyTypes>
-          <PropertyTypesTitle>Browse by property type</PropertyTypesTitle>
+          <PropertyTypesTitle>Browse by event type</PropertyTypesTitle>
           <Slider slidesToShow={4} infinite={false}>
-            {propertyCountByPropertyTypes.map((property, index) => (
-              <Link to={`/search_results?type=${property.type}`} key={index}>
+            {propertyCountByPropertyTypes.map((event, index) => (
+              <Link to={`/search_results?type=${event.type}`} key={index}>
                 <SliderItem>
                   <SliderItemImage
-                    src={propertyTypeImages[index]}
+                    src={eventTypeImages[index]}
                     width={240}
                     height={185}
                   />
-                  <SliderItemText>{property.type}</SliderItemText>
+                  <SliderItemText>{event.type}</SliderItemText>
                   <SliderItemSubTitle>
-                    {property.count} properties
+                    {event.count} properties
                   </SliderItemSubTitle>
                 </SliderItem>
               </Link>
@@ -154,22 +151,20 @@ const Home = (props: Props) => {
         <FeaturedProperties>
           <FeaturedPropertiesTitle>Homes guests love</FeaturedPropertiesTitle>
           <Slider slidesToShow={4} infinite={false}>
-            {featuredProperties.map((property) => (
-              <Link to={`/properties/${property._id}`} key={property._id}>
+            {featuredProperties.map((event) => (
+              <Link to={`/properties/${event._id}`} key={event._id}>
                 <SliderItem>
                   <SliderItemImage
-                    src={property.images[0]}
+                    src={event.images[0]}
                     width={240}
                     height={240}
                   />
-                  <FeaturedPropertiesText>
-                    {property.name}
-                  </FeaturedPropertiesText>
-                  <SliderItemSubTitle>{property.city}</SliderItemSubTitle>
+                  <FeaturedPropertiesText>{event.name}</FeaturedPropertiesText>
+                  <SliderItemSubTitle>{event.city}</SliderItemSubTitle>
                   <FeaturedPropertiesText
                     style={{ fontWeight: "bold", marginTop: "10px" }}
                   >
-                    Starting form ₹ {property.cheapestPrice}
+                    Starting form ₹ {event.cheapestPrice}
                   </FeaturedPropertiesText>
                   <FeaturedPropertiesScore>
                     <FeaturedPropertiesRating>9.0</FeaturedPropertiesRating>

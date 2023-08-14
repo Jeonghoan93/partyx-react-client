@@ -1,7 +1,7 @@
 import { useQuery } from "@tanstack/react-query";
 import { useParams } from "react-router-dom";
 import Button from "../../components/Button";
-import { getProperty } from "../../services/events";
+import { getEvent } from "../../services/events";
 import {
   Container,
   Head,
@@ -42,7 +42,7 @@ const PropertyPage = (props: Props) => {
   const params = useParams();
 
   const { data: property } = useQuery(["property"], () =>
-    getProperty(params.id || "")
+    getEvent(params.id || "")
   );
   const nights =
     Math.abs(

@@ -1,5 +1,9 @@
-import { createGlobalStyle } from 'styled-components'
-import { colors } from './utils/styles'
+import { createGlobalStyle } from "styled-components";
+import { colors } from "./utils/styles";
+
+export const GlobalFonts = createGlobalStyle`
+  @import url('https://fonts.googleapis.com/css2?family=Manrope:wght@300;800&display=swap');
+`;
 
 export default createGlobalStyle`
   body {
@@ -26,4 +30,4 @@ export default createGlobalStyle`
     border: none;
     outline: none;
   }
-`
+`;

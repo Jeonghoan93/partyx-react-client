@@ -1,10 +1,6 @@
 import React from "react";
-import styled, { createGlobalStyle, keyframes } from "styled-components";
-
-// Import the Manrope font for a modern and friendly look
-const GlobalFonts = createGlobalStyle`
-  @import url('https://fonts.googleapis.com/css2?family=Manrope:wght@300;800&display=swap');
-`;
+import { GlobalFonts } from "src/BaseStyles";
+import styled, { keyframes } from "styled-components";
 
 const Overlay = styled.div`
   position: fixed;
@@ -68,7 +64,7 @@ const Loading: React.FC = () => {
     <Overlay>
       <GlobalFonts />
       <Logo>
-        Party<span>X</span>
+        PARTY<span>X</span>
       </Logo>
       <Subtitle>Anytime, Anywhere, Anyone</Subtitle>
       <div>

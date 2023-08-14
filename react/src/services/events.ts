@@ -8,12 +8,12 @@ export const getEvents = async (filters: {
   return res.data;
 };
 
-export const getProperty = async (propertyId: string): Promise<Property> => {
-  const res = await api.get(`/properties/${propertyId}`);
+export const getEvent = async (eventId: string): Promise<Property> => {
+  const res = await api.get(`/properties/${eventId}`);
   return res.data;
 };
 
-export const countPropertyByCities = async (
+export const countEventByCities = async (
   cities: string[]
 ): Promise<{ city: string; count: number }[]> => {
   const res = await api.get("/properties", {
@@ -22,7 +22,7 @@ export const countPropertyByCities = async (
   return res.data;
 };
 
-export const countPropertyByPropertyTypes = async (
+export const countEventByEventTypes = async (
   propertyTypes: string[]
 ): Promise<{ type: string; count: number }[]> => {
   const res = await api.get("/properties", {

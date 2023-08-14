@@ -10,7 +10,7 @@ type Props = {};
 
 const PropertyCards = (props: Props) => {
   const { state } = useContext(SearchContext);
-  const { data: properties } = useQuery(["properties", state.city], () =>
+  const { data: events } = useQuery(["events", state.city], () =>
     getEvents({ city: state.city })
   );
   const nights =
@@ -23,9 +23,9 @@ const PropertyCards = (props: Props) => {
 
   return (
     <Container>
-      <Title>{properties?.length || 0} properties found</Title>
-      {properties &&
-        properties.map((property) => (
+      <Title>{events?.length || 0} events found</Title>
+      {events &&
+        events.map((property) => (
           <PropertyCard
             property={property}
             nights={nights}

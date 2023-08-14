@@ -2,8 +2,10 @@ import { useContext, useRef, useState } from "react";
 import { MdLogout } from "react-icons/md";
 import { RiHotelLine } from "react-icons/ri";
 import { Link } from "react-router-dom";
+import { GlobalFonts } from "src/BaseStyles";
 import { AuthContext } from "../../contexts/AuthContext";
 import useOnClickOutside from "../../hooks/useOnClickOutside";
+import UserMenu from "./UserMenu";
 import {
   Avatar,
   AvatarImage,
@@ -12,7 +14,6 @@ import {
   AvatarText,
   Brand,
   Left,
-  NavbarButton,
   Right,
   StyledNavbar,
 } from "./styles";
@@ -31,9 +32,12 @@ const Navbar = (props: Props) => {
 
   return (
     <StyledNavbar>
+      <GlobalFonts />
       <Left>
         <Link to="/">
-          <Brand>PartyX</Brand>
+          <Brand to="/">
+            PARTY<span className="redX">X</span>
+          </Brand>
         </Link>
       </Left>
       <Right>
@@ -62,12 +66,7 @@ const Navbar = (props: Props) => {
           </Avatar>
         ) : (
           <>
-            <Link to="/register">
-              <NavbarButton>Register</NavbarButton>
-            </Link>
-            <Link to="/login">
-              <NavbarButton>Log in</NavbarButton>
-            </Link>
+            <UserMenu />
           </>
         )}
       </Right>

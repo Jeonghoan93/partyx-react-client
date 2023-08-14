@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import styled from "styled-components";
 import { colors, sizes } from "../../utils/styles";
 
@@ -18,22 +19,16 @@ export const Right = styled.div`
   gap: 10px;
 `;
 
-export const Brand = styled.div`
+export const Brand = styled(Link)`
+  font-family: "Manrope", sans-serif;
+  font-weight: 800;
   color: ${colors.textWhite};
   font-size: 24px;
-  font-weight: bold;
-`;
-
-export const NavbarButton = styled.button`
-  color: ${colors.primaryLight};
-  background-color: ${colors.textWhite};
-  padding: 8px 14px;
-  font-size: 14px;
-  border: 1px solid ${colors.primaryLight};
   cursor: pointer;
+  text-decoration: none;
 
-  &:hover {
-    background-color: aliceblue;
+  .redX {
+    color: red;
   }
 `;
 

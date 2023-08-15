@@ -32,7 +32,6 @@ export const Container = styled.div`
     flex-direction: column;
     align-items: stretch;
     max-height: none;
-    border: 2px solid ${colors.textDarkest};
   }
 `;
 export const Item = styled.div`
@@ -52,6 +51,10 @@ export const Item = styled.div`
     border-left: none;
     border-top: 4px solid ${colors.textDarkest};
 
+    &:not(:first-child) {
+      border-left: 0px solid ${colors.textDarkest};
+    }
+
     &:first-child {
       border-top: none;
     }
@@ -60,6 +63,7 @@ export const Item = styled.div`
 export const Input = styled.input`
   border: none;
   outline: none;
+  min-width: 200px;
 
   &::placeholder {
     font-size: 14px;

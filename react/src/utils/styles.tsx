@@ -19,6 +19,9 @@ export const colors = {
   borderGray: "lightgray",
 
   skeleton: "lightgray",
+
+  tooltipBg: "#262626",
+  tooltipText: "#fff",
 };
 
 export const sizes = {

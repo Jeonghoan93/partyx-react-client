@@ -36,6 +36,8 @@ export const ListItem = styled.li<{ isActive: boolean }>`
   gap: 10px;
   cursor: pointer;
 
+  position: relative;
+
   &:hover {
     background-color: hsla(0, 0%, 100%, 0.1);
   }
@@ -53,5 +55,23 @@ export const Icon = styled.span``;
 export const Span = styled.span`
   @media (max-width: ${sizes.screenMobileMaxWidth}px) {
     display: none;
+  }
+`;
+
+export const Tooltip = styled.span`
+  display: none;
+  position: absolute;
+  background-color: ${colors.tooltipBg};
+  color: ${colors.tooltipText};
+  padding: 5px 10px;
+  border-radius: 5px;
+  z-index: 10;
+  top: 100%;
+  left: 50%;
+  transform: translateX(-50%);
+  white-space: nowrap;
+
+  @media (max-width: ${sizes.screenMobileMaxWidth}px) {
+    display: block;
   }
 `;

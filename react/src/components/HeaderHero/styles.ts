@@ -16,6 +16,10 @@ export const Container = styled.div`
     margin-left: 1.3%;
     margin-right: 1.3%;
   }
+
+  @media (max-width: ${sizes.screenMobileMaxWidth}px) {
+    margin-top: 50px;
+  }
 `;
 
 export const Text = styled.h1`

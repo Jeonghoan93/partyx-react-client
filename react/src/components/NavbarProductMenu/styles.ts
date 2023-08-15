@@ -12,6 +12,10 @@ export const Menu = styled.div`
     margin-left: 1.3%;
     margin-right: 1.3%;
   }
+
+  @media (max-width: ${sizes.screenMobileMaxWidth}px) {
+    padding: 5px 0;
+  }
 `;
 export const List = styled.ul`
   list-style: none;

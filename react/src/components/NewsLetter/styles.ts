@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import { colors, sizes } from "../../utils/styles";
+import { colors } from "../../utils/styles";
 
 export const Container = styled.section`
   display: flex;
@@ -8,11 +8,6 @@ export const Container = styled.section`
   background-color: ${colors.textDarkest};
   color: ${colors.textWhite};
   padding: 45px 0;
-
-  @media (max-width: ${sizes.screenMaxWidth}px) {
-    margin-left: 1.3%;
-    margin-right: 1.3%;
-  }
 `;
 
 export const Title = styled.h2`

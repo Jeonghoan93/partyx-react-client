@@ -5,7 +5,7 @@ import HeaderSearch from "../HeaderSearch";
 import Navbar from "../Navbar";
 import NavbarProductMenu from "../NavbarProductMenu";
 import NewsLetter from "../NewsLetter";
-import { Header, Main } from "./styles";
+import { Header, HeaderInside, Main } from "./styles";
 
 type Props = {};
 
@@ -15,14 +15,16 @@ const Layout = (props: Props) => {
   return (
     <>
       <Header>
-        <Navbar />
-        <NavbarProductMenu />
-        {location.pathname === "/" && (
-          <>
-            <HeaderHero />
-            <HeaderSearch />
-          </>
-        )}
+        <HeaderInside>
+          <Navbar />
+          <NavbarProductMenu />
+          {location.pathname === "/" && (
+            <>
+              <HeaderHero />
+              <HeaderSearch />
+            </>
+          )}
+        </HeaderInside>
       </Header>
       <Main>
         <Outlet />

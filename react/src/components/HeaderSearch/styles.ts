@@ -15,8 +15,9 @@ export const Container = styled.div`
   left: 0;
   right: 0;
   bottom: -27px;
-  width: 100%;
-  z-index: 2;
+
+  z-index: 99;
+  box-shadow: 0 2px 16px rgba(0, 0, 0, 0.15);
 
   max-width: ${sizes.screenMaxWidth}px;
   margin-left: auto;
@@ -31,6 +32,7 @@ export const Container = styled.div`
     flex-direction: column;
     align-items: stretch;
     max-height: none;
+    border: 2px solid ${colors.textDarkest};
   }
 `;
 export const Item = styled.div`
@@ -41,7 +43,6 @@ export const Item = styled.div`
   padding: 0 15px;
   cursor: pointer;
   position: relative;
-  width: 100%;
 
   &:not(:first-child) {
     border-left: 4px solid ${colors.textDarkest};
@@ -59,7 +60,6 @@ export const Item = styled.div`
 export const Input = styled.input`
   border: none;
   outline: none;
-  width: 100%;
 
   &::placeholder {
     font-size: 14px;
@@ -77,17 +77,12 @@ export const SearchButton = styled.div`
   font-size: 20px;
   color: ${colors.textWhite};
   cursor: pointer;
-
-  @media (max-width: ${sizes.screenMobileMaxWidth}px) {
-    border-left: none;
-    width: 100%;
-    justify-content: center;
-  }
+  justify-content: center;
 `;
 export const DateRangePickerContainer = styled.div`
   position: absolute;
   left: 0;
-  top: 60px;
+  top: 50px;
   box-shadow: 0 2px 16px rgba(0, 0, 0, 0.15);
   z-index: 2;
 `;

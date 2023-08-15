@@ -17,7 +17,7 @@ const UserMenu = () => {
           Advertise your party
         </AdvertiseButton>
         <MenuButton onClick={handleShowMenu}>
-          <AiOutlineMenu size={18} />
+          <AiOutlineMenu size={20} />
           <HiddenDiv>
             <StyledAvatar />
           </HiddenDiv>
@@ -39,7 +39,6 @@ const UserMenu = () => {
 export default UserMenu;
 
 import styled from "styled-components";
-import { colors } from "../../utils/styles";
 
 const UserMenuContainer = styled.div`
   position: relative;
@@ -77,7 +76,6 @@ const AdvertiseButton = styled.div`
 
 const MenuButton = styled.div`
   padding: 1rem; // Equivalent to p-4
-  border: 1px solid ${colors.secondary}; // Define this color in your styles.
   display: flex;
   flex-direction: row;
   align-items: center;

@@ -11,9 +11,11 @@ const StyledAvatar: React.FC<AvatarProps> = ({ src }) => {
 export default StyledAvatar;
 
 const AvatarImg = styled.img`
-  border-radius: 9999px;
-  height: 30px;
-  width: 30px;
+  border-radius: 50%;
+  height: 27px;
+  width: 27px;
 
-  border: 1px solid #eaeaea;
+  margin-left: 0.5rem;
+
+  border: 1px solid #121212;
 `;

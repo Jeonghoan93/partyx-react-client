@@ -88,6 +88,6 @@ export const DateRangePickerContainer = styled.div`
 `;
 export const GroupCounterContainer = styled.div`
   position: absolute;
-  top: 60px;
+  top: 45px;
   left: 0;
 `;

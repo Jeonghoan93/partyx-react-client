@@ -54,7 +54,7 @@ const SearchBox = (props: Props) => {
 
   return (
     <Container>
-      <Title>Search</Title>
+      <Title>Filter</Title>
 
       <Form>
         <FormGroup>
@@ -130,7 +130,7 @@ const SearchBox = (props: Props) => {
             setSearch();
           }}
         >
-          Search
+          Apply
         </SearchButton>
       </Form>
     </Container>

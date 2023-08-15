@@ -1,7 +1,11 @@
 import styled from "styled-components";
 import { sizes } from "../../utils/styles";
 
-export const Header = styled.div`
+interface HeaderProps {
+  isHomePage?: boolean;
+}
+
+export const Header = styled.div<HeaderProps>`
   background: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)),
     url("/bg.jpeg");
   background-size: cover;
@@ -11,8 +15,10 @@ export const Header = styled.div`
   position: relative;
   margin-bottom: 50px;
 
+  height: ${({ isHomePage }) => (isHomePage ? "auto" : "200px")};
+
   @media (max-width: ${sizes.screenMobileMaxWidth}px) {
-    height: 500px;
+    height: ${({ isHomePage }) => (isHomePage ? "500px" : "350px")};
   }
 `;
 

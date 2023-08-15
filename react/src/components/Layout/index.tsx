@@ -14,16 +14,16 @@ const Layout = (props: Props) => {
 
   return (
     <>
-      <Header>
+      <Header isHomePage={location.pathname === "/"}>
         <HeaderInside>
           <Navbar />
           <NavbarProductMenu />
           {location.pathname === "/" && (
             <>
               <HeaderHero />
-              <HeaderSearch />
             </>
           )}
+          <HeaderSearch />
         </HeaderInside>
       </Header>
       <Main>

@@ -63,7 +63,7 @@ export const Item = styled.div`
 export const Input = styled.input`
   border: none;
   outline: none;
-  min-width: 200px;
+  min-width: 100px;
 
   &::placeholder {
     font-size: 14px;

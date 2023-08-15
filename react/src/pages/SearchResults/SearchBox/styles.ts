@@ -4,7 +4,8 @@ import { colors } from "../../../utils/styles";
 export const Container = styled.section`
   flex: 0.25;
   background-color: ${colors.primaryLightest};
-  border-radius: 2px;
+  border-radius: 10px;
+  box-shadow: 0 2px 16px rgba(0, 0, 0, 0.15);
   padding: 20px;
   height: fit-content;
 `;
@@ -66,12 +67,12 @@ export const SearchButton = styled.button`
   border: none;
   outline: none;
   width: 100%;
-  height: 50px;
+  height: 40px;
   font-size: 16px;
   background-color: ${colors.primaryLight};
   color: ${colors.textWhite};
   margin-top: 15px;
-  border-radius: 2px;
+  border-radius: 7px;
   cursor: pointer;
 
   &:hover {

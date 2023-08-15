@@ -1,4 +1,3 @@
-import { format } from "date-fns";
 import { useRef, useState } from "react";
 import { DateRange } from "react-date-range";
 import "react-date-range/dist/styles.css";
@@ -7,6 +6,7 @@ import { BsCalendarFill } from "react-icons/bs";
 import { FaSearch, FaUserAlt } from "react-icons/fa";
 import { MdLocationOn } from "react-icons/md";
 import { useNavigate } from "react-router-dom";
+import { formatDateToShort } from "src/utils/dateUtils";
 import useOnClickOutside from "../../hooks/useOnClickOutside";
 import useSearch from "../../hooks/useSearch";
 import GroupCounter from "../GroupCounter";
@@ -40,6 +40,9 @@ const HeaderSearch = (props: Props) => {
   const { city, setCity, dates, setDates, group, setGroup, setSearch } =
     useSearch();
 
+  const startDateForm = formatDateToShort(dates.startDate);
+  const endDateForm = formatDateToShort(dates.endDate);
+
   return (
     <Container>
       <Item>
@@ -48,17 +51,14 @@ const HeaderSearch = (props: Props) => {
           type="search"
           value={city}
           onChange={(e) => setCity(e.target.value)}
-          placeholder={"Which city?"}
+          placeholder={"Which city ?"}
         />
       </Item>
       <Item onClick={() => setShowDateRangePicker((prev) => !prev)}>
         <BsCalendarFill fontSize={15} />
         <Input
           type="text"
-          value={`${format(dates.startDate, "MM/dd/yyyy")} - ${format(
-            dates.endDate,
-            "MM/dd/yyyy"
-          )}`}
+          value={`${startDateForm} - ${endDateForm}`}
           ref={refDateRangeInput}
           readOnly
         />

@@ -1,44 +1,22 @@
-import { format } from "date-fns";
-import { useContext, useEffect, useRef, useState } from "react";
-import { DateRange } from "react-date-range";
-import { BsCalendarFill } from "react-icons/bs";
-import { FaUserAlt } from "react-icons/fa";
-import { MdLocationOn } from "react-icons/md";
+import { useContext, useEffect } from "react";
 import { useSearchParams } from "react-router-dom";
-import GroupCounter from "../../../components/GroupCounter";
 import { SearchContext } from "../../../contexts/SearchContext";
-import useOnClickOutside from "../../../hooks/useOnClickOutside";
 import useSearch from "../../../hooks/useSearch";
+import FilterCheckbox from "./FilterCheckBox";
 import {
   Container,
-  DateRangePickerContainer,
   Form,
   FormGroup,
   FormLabel,
-  GroupCounterContainer,
   Input,
-  InputContainer,
   SearchButton,
+  SeparatorLine,
   Title,
 } from "./styles";
 
 type Props = {};
 
 const SearchBox = (props: Props) => {
-  const [isShowGroupCounter, setShowGroupCounter] = useState(false);
-  const [isShowDateRangePicker, setShowDateRangePicker] = useState(false);
-  const refGroupCounterContainer = useRef<HTMLDivElement>(null);
-  const refGroupInput = useRef<HTMLInputElement>(null);
-  const refDateRangePickerContainer = useRef<HTMLDivElement>(null);
-  const refDateRangeInput = useRef<HTMLInputElement>(null);
-
-  useOnClickOutside([refDateRangePickerContainer, refDateRangeInput], () =>
-    setShowDateRangePicker(false)
-  );
-  useOnClickOutside([refGroupCounterContainer, refGroupInput], () =>
-    setShowGroupCounter(false)
-  );
-
   const { city, setCity, dates, setDates, group, setGroup, setSearch } =
     useSearch();
   const { dispatch } = useContext(SearchContext);
@@ -54,72 +32,109 @@ const SearchBox = (props: Props) => {
 
   return (
     <Container>
-      <Title>Filter</Title>
+      <Title>Filter by:</Title>
+
+      <SeparatorLine />
 
       <Form>
         <FormGroup>
-          <FormLabel>Destination name</FormLabel>
-          <InputContainer>
-            <MdLocationOn fontSize={20} />
-            <Input
-              type="search"
-              value={city}
-              onChange={(e) => setCity(e.target.value)}
-              placeholder="What city are you going?"
-            />
-          </InputContainer>
+          <FormLabel>Your Budget (per person)</FormLabel>
+          <Input type="text" placeholder="€ Min" />
+          <span>to</span>
+          <Input type="text" placeholder="€ Max" />
         </FormGroup>
+
+        <SeparatorLine />
+
         <FormGroup>
-          <FormLabel>Start &#38; End date</FormLabel>
-          <InputContainer>
-            <BsCalendarFill fontSize={15} />
-            <Input
-              type="text"
-              value={`${format(dates.startDate, "MM/dd/yyyy")} - ${format(
-                dates.endDate,
-                "MM/dd/yyyy"
-              )}`}
-              onClick={() => setShowDateRangePicker((prev) => !prev)}
-              ref={refDateRangeInput}
-              readOnly
-            />
-            {isShowDateRangePicker && (
-              <DateRangePickerContainer ref={refDateRangePickerContainer}>
-                <DateRange
-                  editableDateInputs={true}
-                  moveRangeOnFirstSelection={false}
-                  ranges={[{ ...dates, key: "selection" }]}
-                  onChange={(item) =>
-                    setDates({
-                      startDate: item.selection.startDate || dates.startDate,
-                      endDate: item.selection.endDate || dates.endDate,
-                    })
-                  }
-                />
-              </DateRangePickerContainer>
-            )}
-          </InputContainer>
+          <FormLabel>Event Type</FormLabel>
+          {/* These would normally have some state handling and data fetching to determine counts */}
+          <FilterCheckbox
+            label="House party"
+            count={10}
+            checked={false}
+            onChange={() => {}}
+          />
+          <FilterCheckbox
+            label="Festival"
+            count={7}
+            checked={false}
+            onChange={() => {}}
+          />
+          <FilterCheckbox
+            label="Rave"
+            count={7}
+            checked={false}
+            onChange={() => {}}
+          />
+          <FilterCheckbox
+            label="Club event"
+            count={7}
+            checked={false}
+            onChange={() => {}}
+          />
         </FormGroup>
+
+        <SeparatorLine />
+
         <FormGroup>
-          <FormLabel>Group</FormLabel>
-          <InputContainer>
-            <FaUserAlt fontSize={16} />
-            <Input
-              type="text"
-              value={`${group.adults} adults`}
-              onClick={() => setShowGroupCounter((prev) => !prev)}
-              ref={refGroupInput}
-              readOnly
-            />
-            {isShowGroupCounter && (
-              <GroupCounterContainer ref={refGroupCounterContainer}>
-                <GroupCounter
-                  group={group}
-                  setGroup={(group) => setGroup(group)}
-                />
-              </GroupCounterContainer>
-            )}
-          </InputContainer>
+          <FormLabel>Distance from center of {city}</FormLabel>
+          {/* Again, you'd normally have some state handling and data fetching here */}
+          <FilterCheckbox
+            label="Less than 1 km"
+            count={5}
+            checked={false}
+            onChange={() => {}}
+          />
+          <FilterCheckbox
+            label="Less than 3 km"
+            count={12}
+            checked={false}
+            onChange={() => {}}
+          />
+          <FilterCheckbox
+            label="Less than 5 km"
+            count={5}
+            checked={false}
+            onChange={() => {}}
+          />
+          {/* ... Add other distances similarly */}
+        </FormGroup>
+
+        <SeparatorLine />
+
+        <FormGroup>
+          <FormLabel>Cancellation Policy</FormLabel>
+          <FilterCheckbox
+            label="Free cancellation"
+            count={15}
+            checked={false}
+            onChange={() => {}}
+          />
+        </FormGroup>
+
+        <SeparatorLine />
+
+        <FormGroup>
+          <FormLabel>Review Score</FormLabel>
+          <FilterCheckbox
+            label="Wonderful: 9+"
+            count={12}
+            checked={false}
+            onChange={() => {}}
+          />
+          <FilterCheckbox
+            label="Very Good: 8+"
+            count={12}
+            checked={false}
+            onChange={() => {}}
+          />
+          <FilterCheckbox
+            label="Good: 7+"
+            count={12}
+            checked={false}
+            onChange={() => {}}
+          />
         </FormGroup>
 
         <SearchButton

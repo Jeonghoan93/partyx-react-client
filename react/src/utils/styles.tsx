@@ -14,6 +14,7 @@ export const colors = {
 
   primaryLight: "#0071c2",
   primaryLightest: "#ebf3ff",
+  primaryLighter: "#d8e8da",
   primaryDark: "#00224F",
 
   borderGray: "lightgray",

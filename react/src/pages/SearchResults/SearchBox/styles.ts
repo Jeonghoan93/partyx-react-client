@@ -6,14 +6,17 @@ export const Container = styled.section`
   background-color: ${colors.primaryLightest};
   border-radius: 10px;
   box-shadow: 0 2px 16px rgba(0, 0, 0, 0.15);
-  padding: 20px;
+  padding: 15px;
+  max-width: 300px;
   height: fit-content;
+  margin: 0 auto;
 `;
 
 export const Title = styled.h3`
-  font-weight: normal;
-  font-size: 20px;
-  margin-bottom: 14px;
+  font-weight: 800;
+  font-size: 1rem;
+  margin-bottom: 20px;
+  color: ${colors.primaryDark};
 `;
 
 export const Form = styled.form`
@@ -23,59 +26,52 @@ export const Form = styled.form`
 `;
 
 export const FormGroup = styled.div`
-  position: relative;
   display: flex;
   flex-direction: column;
   gap: 4px;
 `;
 
 export const FormLabel = styled.label`
-  font-size: 12px;
-`;
-
-export const InputContainer = styled.div`
-  display: flex;
-  align-items: center;
-  gap: 8px;
-  background-color: #fff;
-  padding: 8px;
-  border-radius: 2px;
+  font-size: 0.8rem;
+  font-weight: 600;
+  color: ${colors.textDark};
+  margin-bottom: 5px;
 `;
 
 export const Input = styled.input`
-  border: none;
+  border: 1px solid ${colors.primary};
+  border-radius: 5px;
   outline: none;
-  width: 100%;
-  font-size: 14px;
-`;
+  padding: 6px;
+  font-size: 1rem;
+  transition: border 0.3s ease;
 
-export const DateRangePickerContainer = styled.div`
-  position: absolute;
-  left: 0;
-  top: 60px;
-  box-shadow: 0 2px 16px rgba(0, 0, 0, 0.15);
-  z-index: 2;
-`;
-
-export const GroupCounterContainer = styled.div`
-  position: absolute;
-  top: 60px;
-  left: 0;
+  &:focus {
+    border-color: ${colors.primaryDark};
+  }
 `;
 
 export const SearchButton = styled.button`
   border: none;
   outline: none;
   width: 100%;
-  height: 40px;
-  font-size: 16px;
-  background-color: ${colors.primaryLight};
+  height: 45px;
+  font-size: 1rem;
+  background-color: ${colors.primary};
   color: ${colors.textWhite};
-  margin-top: 15px;
+  margin-top: 35px;
   border-radius: 7px;
   cursor: pointer;
+  transition: background-color 0.3s ease;
 
   &:hover {
-    background-color: ${colors.primary};
+    background-color: ${colors.primaryDark};
   }
+`;
+
+export const SeparatorLine = styled.hr`
+  border: 0;
+  border-top: 1px solid ${colors.primaryLighter};
+  margin: 10px -15px;
+  width: calc(100% + 30px);
 `;

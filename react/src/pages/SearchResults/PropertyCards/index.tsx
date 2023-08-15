@@ -1,6 +1,7 @@
 import { useQuery } from "@tanstack/react-query";
 import { differenceInDays } from "date-fns";
 import { useContext } from "react";
+import { capitalizeFirstLetter } from "src/utils/textFormatTransformer";
 import { SearchContext } from "../../../contexts/SearchContext";
 import { getEvents } from "../../../services/events";
 import PropertyCard from "./PropertyCard";
@@ -23,7 +24,14 @@ const PropertyCards = (props: Props) => {
 
   return (
     <Container>
-      <Title>{events?.length || 0} events found</Title>
+      <Title>
+        {state.city
+          ? `${capitalizeFirstLetter(state.city)}: ${
+              events?.length || 0
+            } events found`
+          : "Search city to show!"}
+      </Title>
+
       {events &&
         events.map((property) => (
           <PropertyCard

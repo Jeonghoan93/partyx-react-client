@@ -7,7 +7,7 @@ import Button from "../../../components/Button";
 import { AuthContext } from "../../../contexts/AuthContext";
 import { createReservation } from "../../../services/reservations";
 import { getRooms } from "../../../services/rooms";
-import getDatesFromRange from "../../../utils/getDatesFromRange";
+import { getDatesFromRange } from "../../../utils/textFormatTransformer";
 import {
   CloseIcon,
   Container,

@@ -21,7 +21,6 @@ type Props = {};
 
 const Register = (props: Props) => {
   const [formData, setFormData] = useState({
-    firstName: "",
     email: "",
     password: "",
     confirmPassword: "",
@@ -54,7 +53,7 @@ const Register = (props: Props) => {
   return (
     <AuthContainer>
       <AuthInner>
-        <AuthTitle>Register</AuthTitle>
+        <AuthTitle>Sign up</AuthTitle>
 
         {errorMsg && (
           <Alert variant="danger" style={{ marginBottom: "15px" }}>
@@ -63,15 +62,6 @@ const Register = (props: Props) => {
         )}
 
         <Form onSubmit={handleForm}>
-          <FormGroup>
-            <FormLabel>Email</FormLabel>
-            <FormInput
-              type="text"
-              name="email"
-              onChange={handleChange}
-              required
-            />
-          </FormGroup>
           <FormGroup style={{ marginBottom: "5px" }}>
             <FormLabel>Email</FormLabel>
             <FormInput

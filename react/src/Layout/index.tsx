@@ -1,10 +1,10 @@
 import { Outlet, useLocation } from "react-router-dom";
-import Footer from "../Footer";
-import HeaderHero from "../HeaderHero";
-import HeaderSearch from "../HeaderSearch";
-import Navbar from "../Navbar";
-import NavbarProductMenu from "../NavbarProductMenu";
-import NewsLetter from "../NewsLetter";
+import Footer from "../components/Footer";
+import HeaderHero from "../components/HeaderHero";
+import HeaderSearch from "../components/HeaderSearch";
+import Navbar from "../components/Navbar";
+import NavbarProductMenu from "../components/NavbarProductMenu";
+import NewsLetter from "../components/NewsLetter";
 import { Header, HeaderInside, Main } from "./styles";
 
 type Props = {};

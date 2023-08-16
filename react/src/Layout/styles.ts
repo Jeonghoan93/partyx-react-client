@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import { sizes } from "../../utils/styles";
+import { sizes } from "../utils/styles";
 
 interface HeaderProps {
   isHomePage?: boolean;

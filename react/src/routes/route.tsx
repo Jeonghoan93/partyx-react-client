@@ -1,6 +1,6 @@
 import { Suspense, lazy } from "react";
 import { Route, Routes } from "react-router-dom";
-import Layout from "../components/Layout";
+import Layout from "../Layout";
 import Loading from "../components/Loading/Loading";
 
 const delay = (ms) => new Promise((resolve) => setTimeout(resolve, ms));

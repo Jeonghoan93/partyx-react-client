@@ -14,3 +14,9 @@ export const Container = styled.div`
     margin-right: 1.3%;
   }
 `;
+
+export const HiddenOnMobile = styled.div`
+  @media (max-width: ${sizes.screenMobileMaxWidth}px) {
+    display: none;
+  }
+`;

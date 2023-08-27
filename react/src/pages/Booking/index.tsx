@@ -1,9 +1,13 @@
-import { useQuery } from '@tanstack/react-query'
-import { useContext } from 'react'
-import { Navigate, useLocation } from 'react-router-dom'
-import Button from '../../components/Button'
-import { AuthContext } from '../../contexts/AuthContext'
-import { deleteReservation, getReservations } from '../../services/reservations'
+import { useQuery } from "@tanstack/react-query";
+import { useContext } from "react";
+import toast from "react-hot-toast";
+import { Navigate, useLocation } from "react-router-dom";
+import Button from "../../components/Button";
+import { AuthContext } from "../../contexts/AuthContext";
+import {
+  deleteReservation,
+  getReservations,
+} from "../../services/reservations";
 import {
   Container,
   PropertyImage,
@@ -18,31 +22,32 @@ import {
   RoomNumbers,
   Title,
   TotalAmount,
-} from './styles'
-import toast from 'react-hot-toast'
+} from "./styles";
 
-type Props = {}
+type Props = {};
 
 const Bookings = (props: Props) => {
-  const location = useLocation()
-  const { state: auth } = useContext(AuthContext)
-  if (!auth.isAuthenticated) return <Navigate to="/login" state={{ from: location.pathname }} />
+  const location = useLocation();
+  const { state: auth } = useContext(AuthContext);
+  if (!auth.isAuthenticated)
+    return <Navigate to="/login" state={{ from: location.pathname }} />;
 
-  const { data: reservations, refetch } = useQuery(['reservations', auth.user], () =>
-    getReservations({ user: auth.user?._id as string })
-  )
+  const { data: reservations, refetch } = useQuery(
+    ["reservations", auth.user],
+    () => getReservations({ user: auth.user?._id as string })
+  );
 
   const cancelReservation = async (reservationId: string) => {
-    if (!window.confirm('Are you sure?')) return
+    if (!window.confirm("Are you sure?")) return;
 
     try {
-      await deleteReservation(reservationId)
-      refetch()
-      toast.success('Booking cancelled successfully')
+      await deleteReservation(reservationId);
+      refetch();
+      toast.success("Booking cancelled successfully");
     } catch (error: any) {
-      toast.error(error.response.data.message)
+      toast.error(error.response.data.message);
     }
-  }
+  };
 
   return (
     <Container>
@@ -60,13 +65,19 @@ const Bookings = (props: Props) => {
                     <Room>
                       <RoomName>{room.room.name}</RoomName>
                       <RoomNumbers>
-                        ({room.roomNumbers.map((roomNumber) => roomNumber.number).join(',')})
+                        (
+                        {room.roomNumbers
+                          .map((roomNumber) => roomNumber.number)
+                          .join(",")}
+                        )
                       </RoomNumbers>
                     </Room>
                   ))}
                 </ReservationInfoLeft>
                 <ReservationInfoRight>
-                  <TotalAmount>₹ {reservation.totalAmount.toFixed(2)}</TotalAmount>
+                  <TotalAmount>
+                    ₹ {reservation.totalAmount.toFixed(2)}
+                  </TotalAmount>
                   <Button
                     variant="danger"
                     fontWeight={700}
@@ -80,7 +91,7 @@ const Bookings = (props: Props) => {
           ))}
       </Reservations>
     </Container>
-  )
-}
+  );
+};
 
-export default Bookings
+export default Bookings;

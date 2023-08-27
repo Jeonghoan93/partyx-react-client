@@ -2,6 +2,10 @@ import React from "react";
 import { GlobalFonts } from "src/BaseStyles";
 import styled, { keyframes } from "styled-components";
 
+type DotProps = {
+  delay?: number;
+};
+
 const Overlay = styled.div`
   position: fixed;
   top: 0;
@@ -28,7 +32,7 @@ const bounce = keyframes`
   }
 `;
 
-const Dot = styled.div`
+const Dot = styled.div<DotProps>`
   width: 10px;
   height: 10px;
   margin: 0 5px;

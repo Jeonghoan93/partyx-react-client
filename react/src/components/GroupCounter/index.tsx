@@ -1,4 +1,4 @@
-import { Group } from "../../interfaces/search";
+import { Group } from "../../shared/interfaces/search";
 import {
   Container,
   Counter,

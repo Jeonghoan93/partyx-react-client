@@ -3,7 +3,7 @@ import { useCallback, useMemo } from "react";
 import { toast } from "react-hot-toast";
 import { useNavigate } from "react-router-dom";
 import { SafeUser } from "src/types";
-import useLoginModal from "./useLoginModal";
+import useLoginModal from "./modals/useLoginModal";
 
 interface IUseFavorite {
   listingId: string;

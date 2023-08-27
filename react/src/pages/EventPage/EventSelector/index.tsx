@@ -6,7 +6,7 @@ import { Navigate, useLocation, useNavigate } from "react-router-dom";
 import Button from "../../../components/Button";
 import { AuthContext } from "../../../contexts/AuthContext";
 import { createReservation } from "../../../services/reservations";
-import { getRooms } from "../../../services/rooms";
+import { getRooms } from "../../../services/ticket";
 import { getDatesFromRange } from "../../../utils/textFormatTransformer";
 import {
   CloseIcon,

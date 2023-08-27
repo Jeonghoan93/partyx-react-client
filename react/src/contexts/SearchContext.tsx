@@ -1,5 +1,5 @@
 import { createContext, useReducer } from "react";
-import { Group } from "../interfaces/search";
+import { Group } from "../shared/interfaces/search";
 
 type Action =
   | { type: "SET_CITY"; payload: string }

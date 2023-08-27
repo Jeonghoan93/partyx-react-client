@@ -4,12 +4,12 @@ import { useContext } from "react";
 import { capitalizeFirstLetter } from "src/utils/textFormatTransformer";
 import { SearchContext } from "../../../contexts/SearchContext";
 import { getEvents } from "../../../services/events";
-import PropertyCard from "./PropertyCard";
+import EventCard from "./EventCard";
 import { Container, Title } from "./styles";
 
 type Props = {};
 
-const PropertyCards = (props: Props) => {
+const EventCards = (props: Props) => {
   const { state } = useContext(SearchContext);
   const { data: events } = useQuery(["events", state.city], () =>
     getEvents({ city: state.city })
@@ -33,16 +33,16 @@ const PropertyCards = (props: Props) => {
       </Title>
 
       {events &&
-        events.map((property) => (
-          <PropertyCard
-            property={property}
+        events.map((event) => (
+          <EventCard
+            event={event}
             nights={nights}
             adults={state.group.adults}
-            key={property._id}
+            key={event._id}
           />
         ))}
     </Container>
   );
 };
 
-export default PropertyCards;
+export default EventCards;

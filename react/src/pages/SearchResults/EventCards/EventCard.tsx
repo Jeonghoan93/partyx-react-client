@@ -1,35 +1,35 @@
-import { Link } from 'react-router-dom'
-import Button from '../../../components/Button'
-import Property from '../../../interfaces/properties'
+import { Link } from "react-router-dom";
+import Button from "../../../components/Button";
+import Event from "../../../shared/interfaces/event";
 import {
+  CardColumn,
   CardContainer,
-  PropertyImage,
   CardLeft,
   CardMiddle,
-  CardColumn,
+  CardRight,
   PropertyAddress,
   PropertyDistance,
   PropertyFreeCancellation,
   PropertyFreeTaxi,
   PropertyHighLights,
+  PropertyImage,
   PropertyName,
-  CardRight,
-  PropertyScoreTextContainer,
-  PropertyScoreText,
-  PropertyScoreSubText,
-  PropertyRating,
+  PropertyRate,
   PropertyRateInfo,
   PropertyRateInfoText,
-  PropertyRate,
-} from './styles'
+  PropertyRating,
+  PropertyScoreSubText,
+  PropertyScoreText,
+  PropertyScoreTextContainer,
+} from "./styles";
 
 type Props = {
-  property: Property
-  nights: number
-  adults: number
-}
+  event: Event;
+  nights: number;
+  adults: number;
+};
 
-const PropertyCard = ({ property, nights, adults }: Props) => {
+const EventCard = ({ property, nights, adults }: Props) => {
   return (
     <CardContainer>
       <CardLeft>
@@ -45,11 +45,15 @@ const PropertyCard = ({ property, nights, adults }: Props) => {
           <PropertyAddress>{property.address}</PropertyAddress> •
           <PropertyDistance>{property.distance} m from centre</PropertyDistance>
         </CardColumn>
-        {property.freeAirportTaxi && <PropertyFreeTaxi>Free airport taxi</PropertyFreeTaxi>}
-        <PropertyHighLights dangerouslySetInnerHTML={{ __html: property.highlights }} />
+        {property.freeAirportTaxi && (
+          <PropertyFreeTaxi>Free airport taxi</PropertyFreeTaxi>
+        )}
+        <PropertyHighLights
+          dangerouslySetInnerHTML={{ __html: property.highlights }}
+        />
         {property.freeCancellation && (
           <>
-            <PropertyFreeCancellation style={{ fontWeight: 'bold' }}>
+            <PropertyFreeCancellation style={{ fontWeight: "bold" }}>
               FREE cancellation • No prepayment needed
             </PropertyFreeCancellation>
             <PropertyFreeCancellation>
@@ -70,7 +74,9 @@ const PropertyCard = ({ property, nights, adults }: Props) => {
           <PropertyRateInfoText>
             {nights} night, {adults} adults
           </PropertyRateInfoText>
-          <PropertyRate>₹ {(property.cheapestPrice * nights).toFixed(2)}</PropertyRate>
+          <PropertyRate>
+            ₹ {(property.cheapestPrice * nights).toFixed(2)}
+          </PropertyRate>
           <PropertyRateInfoText>+₹ 0 taxes and charges</PropertyRateInfoText>
         </PropertyRateInfo>
         <Link to={`/properties/${property._id}`}>
@@ -78,7 +84,7 @@ const PropertyCard = ({ property, nights, adults }: Props) => {
         </Link>
       </CardRight>
     </CardContainer>
-  )
-}
+  );
+};
 
-export default PropertyCard
+export default EventCard;
